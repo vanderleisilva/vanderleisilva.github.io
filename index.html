@@ -53,7 +53,7 @@ layout: base
 		<div class="col-sm-12">
 			{% for post in site.posts %}
 				{% if post.highlight %}
-				<a href="#" title="{{ post.title }}" class="col-sm-6 col-lg-3 feature-box">
+				<a href="{{ post.url }}" title="{{ post.title }}" class="col-sm-6 col-lg-3 feature-box">
 					<div class="feature-box-inner">
 						<div class="feature-box-icon">
 							<i class="fa {{ post.icon }}"></i>
