@@ -38,7 +38,7 @@ layout: base
 			</div>
 			<div class="col-sm-6">
 				<a href="#tpl_download" class="btn col-xs-12 scroll_effect shadow-top-down">
-					<i class="fa fa-download"></i> Download
+					<i class="fa fa-info-circle"></i> About
 				</a>
 			</div>
 		</div>
@@ -51,46 +51,20 @@ layout: base
 			<h1 class="text-center"><span>...</span> Highlights <span>...</span></h1>
 		</header>
 		<div class="col-sm-12">
-			<div class="col-sm-6 col-lg-3 feature-box">
-				<div class="feature-box-inner">
-					<div class="feature-box-icon">
-						<i class="fa fa-music"></i>
+			{% for post in site.posts %}
+				{% if post.highlight %}
+				<a href="#" title="{{ post.title }}" class="col-sm-6 col-lg-3 feature-box">
+					<div class="feature-box-inner">
+						<div class="feature-box-icon">
+							<i class="fa {{ post.icon }}"></i>
+						</div>
+						<p>
+							{{ post.description }}
+						</p>
 					</div>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.
-					</p>
-				</div>
-			</div>
-			<div class="col-sm-6 col-lg-3 feature-box">
-				<div class="feature-box-inner">
-					<div class="feature-box-icon">
-						<i class="fa fa-pagelines"></i>
-					</div>
-					<p>
-						Quis nostrud exercitation ullamco laboris nisi ut aliquip. Duis aute irure dolor in reprehenderit in voluptate velit esse.
-					</p>
-				</div>
-			</div>
-			<div class="col-sm-6 col-lg-3 feature-box">
-				<div class="feature-box-inner">
-					<div class="feature-box-icon">
-						<i class="fa fa-ship"></i>
-					</div>
-					<p>
-						Cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
-					</p>
-				</div>
-			</div>
-			<div class="col-sm-6 col-lg-3 feature-box">
-				<div class="feature-box-inner">
-					<div class="feature-box-icon">
-						<i class="fa fa-trophy"></i>
-					</div>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad.
-					</p>
-				</div>
-			</div>
+				</a>
+				{% endif %}
+			{% endfor %}
 		</div>
 	</div>
 </section>
@@ -126,9 +100,9 @@ layout: base
 					<h1 class="text-center"><span>...</span> Contact <span>...</span></h1>
 				</header>
 				<p class="text-center">
-					<i class="fa fa-map-marker"></i> 1234 Lincoln Way, San Francisco, California<br />
+					<i class="fa fa-map-marker"></i> Visc. de Mauá Square, Santos, São Paulo - Brazil<br />
 					<i class="fa fa-envelope"></i> Email: <a href="mailto:vanderlei.alves.da.silva@gmail.com">vanderlei.alves.da.silva@gmail.com</a><br />
-					<i class="fa fa-phone"></i> Phone: <a href="tel:010-020-0340">010-020-0340</a>
+					<i class="fa fa-phone"></i> Phone: <a href="#">+55 13-988333966</a>
 				</p>
 			</div>
 		</div>

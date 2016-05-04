@@ -1,4 +1,4 @@
-/* 
+/*
 
 App Landing Template
 
@@ -89,7 +89,7 @@ form button.form-control:focus {
     background-color: #1c2d35;
 }
 form textarea.form-control { min-height: 120px;}
-form .input-group-addon { 
+form .input-group-addon {
     border: 0px;
     background-color: transparent;
     border-bottom: 3px solid #233842;
@@ -117,7 +117,7 @@ header.template_header h1 {
     color: #fff;
 }
 header.template_header h1 span {
-    position: relative; 
+    position: relative;
     top: -15px;
 }
 /***** Main Menu *****/
@@ -132,7 +132,7 @@ nav.main-menu {
     border-radius: 5px;
     border: 1px solid rgba(37,58,68,.15);
 }
-nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-menu a { 
+nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-menu a {
     color: #455a64;
     text-align: left;
     font: normal normal 400 18px/30px 'Fira Sans', sans-serif;
@@ -212,6 +212,12 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     background: #455a64 url(../images/pattern_bg.png) fixed;
     padding-bottom: 130px;
 }
+#tpl_features a {
+    color: black;
+}
+#tpl_features a:hover {
+    text-decoration: none;
+}
 #tpl_features p {
     padding-bottom: 30px;
     text-align: center;
@@ -226,6 +232,7 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
 #tpl_features .feature-box:hover {
     padding: 0;
     color: #fff;
+	font-style: normal;
 }
 #tpl_features .feature-box .feature-box-inner {
     box-shadow: inset 0px 0px 0 10px #cecece;
@@ -259,7 +266,7 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     color:#233842;
 }
 /***** Download *****/
-#tpl_download { 
+#tpl_download {
     background: url(../images/download_background.jpg) fixed;
 }
 #tpl_download h2 {
@@ -372,7 +379,7 @@ footer {
     line-height: 32px;
     color: #666;
 }
-.footer-copyright a { 
+.footer-copyright a {
     border-bottom: 1px dotted #fff;
     color: #666;
 }

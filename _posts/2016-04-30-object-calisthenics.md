@@ -3,6 +3,8 @@ layout: post
 title: "Object Calisthenics"
 date: 2016-04-23
 description: "It's time to leverage our code quality, assure maintainability, readability, testability and comprehensibility! Lets calisthenic our objects!"
+icon: fa-music
+highlight: 1
 ---
 
 When I first started coding, turning back some ten years ago, my main concern was to see my code working, by that time the understanding of working that I had, means the result be the expected one or in other words: answer what should be done. However day by day, that concerned has changed. I've added a second question to my development life-cycle: How development should be done, structured.
