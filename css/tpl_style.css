@@ -312,6 +312,11 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
 #tpl_element .posts .description{
   margin-bottom: 40px;
 }
+#tpl_element img{
+  border: solid 1px #bdbdbd;
+  padding: 10px;
+  border-radius: 4px;
+}
 #tpl_element #element-icon-wapper > div {
     background-color: rgba(0,0,0,.05);
     padding-bottom: 5px;
