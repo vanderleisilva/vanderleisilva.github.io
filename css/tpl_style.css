@@ -269,6 +269,13 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
 #tpl_download {
     background: url(../images/download_background.jpg) fixed;
 }
+#tpl_download .highlight{
+  background-color: rgba(255,255,255,.6);
+  border-bottom: 1px dotted #000;
+  text-decoration: none;
+  padding: 5px;
+  color: #000;
+}
 #tpl_download h2 {
     font: normal normal 100 100px/150px 'Fira Sans', sans-serif;
     text-align: center;
@@ -364,9 +371,9 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     color: #223741;
 }
 #tpl_contact .social .social-facebook { background: #4a6fb5;}
-#tpl_contact .social .social-twitter { background: #28a9e0;}
-#tpl_contact .social .social-youtube { background: #f86d70;}
-#tpl_contact .social .social-instagram { background: #cab9a9;}
+#tpl_contact .social .social-github { background: #28a9e0;}
+#tpl_contact .social .social-linkedin { background: #89adff;}
+#tpl_contact .social .social-slideshare { background: #cab9a9;}
 /***** Footer *****/
 footer {
     padding: 20px 0 16px 0;
