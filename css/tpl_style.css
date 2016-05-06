@@ -112,7 +112,6 @@ form .checkbox input[type=checkbox] { margin-top: 12px;}
 /***** Template Header *****/
 header.template_header h1 {
     font: normal normal 200 50px/150px 'Fira Sans', sans-serif;
-    text-align: center;
     margin-top: 50px;
     color: #fff;
 }
@@ -300,13 +299,18 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     background-color: #fff;
     margin-top: 40px;
     margin-bottom: 80px;
+    padding: 3%;
     padding-bottom: 40px;
     border-radius: 5px;
 }
-#tpl_element header h1 { color: #000;}
+#tpl_element header h1 { color: #000; border-bottom: solid 1px #bdbdbd;}
+#tpl_element header h1  small{ font-size: 50%; }
 #tpl_element #element-icon-wapper {
     overflow: hidden;
     border-radius: 5px;
+}
+#tpl_element .posts .description{
+  margin-bottom: 40px;
 }
 #tpl_element #element-icon-wapper > div {
     background-color: rgba(0,0,0,.05);
