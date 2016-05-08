@@ -1,19 +1,29 @@
 ---
-layout: default
-title: Technology talks
+layout: base
 ---
-<h1>{{ page.title }}</h1>
-<ul class="posts">
 
-  {% for post in site.posts %}
-    <li>
-      <p>
-        <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-      </p>
-      <p class="description">
-        {{ post.description }}
-      </p>
-    </li>
-  {% endfor %}
+{% include menu/articles.html %}
 
-</ul>
+<!-- Elements -->
+<section id="tpl_element">
+	<div class="container">
+		<header class="template_header">
+			<h1>Articles <small>lorem lorem lorem lorem lorem lorem lorem lorem</small></h1>
+		</header>
+    <h1>{{ page.title }}</h1>
+    <ul class="posts">
+      {% for post in site.posts %}
+        <li>
+          <p>
+            <span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+          </p>
+          <p class="description">
+            {{ post.description }}
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+	</div>
+</section>
+
+{% include contact.html %}

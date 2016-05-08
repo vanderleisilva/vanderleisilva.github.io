@@ -1,0 +1,23 @@
+<section id="tpl_features">
+	<div class="container-fluid">
+		<header class="template_header">
+			<h1 class="text-center"><span>...</span> Highlights <span>...</span></h1>
+		</header>
+		<div class="col-sm-12">
+			{% for post in site.posts %}
+				{% if post.highlight %}
+				<a href="{{ post.url }}" title="{{ post.title }}" class="col-sm-6 col-lg-3 feature-box">
+					<div class="feature-box-inner">
+						<div class="feature-box-icon">
+							<i class="fa {{ post.icon }}"></i>
+						</div>
+						<p>
+							{{ post.description }}
+						</p>
+					</div>
+				</a>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>

@@ -265,31 +265,31 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     color:#233842;
 }
 /***** Download *****/
-#tpl_download {
+#tpl_about {
     background: url(../images/download_background.jpg) fixed;
 }
-#tpl_download .highlight{
+#tpl_about .highlight{
   background-color: rgba(255,255,255,.6);
   border-bottom: 1px dotted #000;
   text-decoration: none;
   padding: 5px;
   color: #000;
 }
-#tpl_download h2 {
+#tpl_about h2 {
     font: normal normal 100 100px/150px 'Fira Sans', sans-serif;
     text-align: center;
     color: #fff;
 }
-#tpl_download p {
+#tpl_about p {
     text-align: center;
     color: #fff;
 }
-#tpl_download a {
+#tpl_about a {
     margin: 50px auto 100px auto;
     display: block;
     width: 260px;
 }
-#tpl_download .tpl_download_text_wapper {
+#tpl_about .tpl_about_text_wapper {
     width: 100%;
     max-width: 550px;
     margin: auto;
@@ -412,7 +412,7 @@ footer {
     nav.main-menu {right: 30px;}
 }
 @media (max-width: 767px) {
-    #tpl_download h2 {font-size: 70px;}
+    #tpl_about h2 {font-size: 70px;}
     #tpl_home h2 {font-size: 26px;}
 }
 @media (max-width: 400px) {

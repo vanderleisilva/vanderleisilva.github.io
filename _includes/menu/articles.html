@@ -1,0 +1,11 @@
+<div class="show-menu">
+	<a href="#" class="shadow-top-down">+</a>
+</div>
+<nav class="main-menu shadow-top-down">
+	<ul class="nav nav-pills nav-stacked">
+		<li><a class="scroll_effect" href="/">Home</a></li>
+		{% for post in site.posts %}
+		<li><a class="scroll_effect" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+		{% endfor %}
+	</ul>
+</nav>

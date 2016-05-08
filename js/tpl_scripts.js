@@ -70,16 +70,16 @@ jQuery(document).ready(function(){
         $("html").attr("style","overflow:auto;");
         $("body").attr("style","overflow:auto;height:auto;");
         $('#tpl_home').parallax("50%", 0.1);
-        $('#tpl_download').parallax("50%", 0.1);
+        $('#tpl_about').parallax("50%", 0.1);
     // Non IE broswer setting
     }else if(!$.tpl_is_ie){
         $("html").attr("style","overflow: auto;");
         $("body").attr("style","background: #455a64;overflow: auto;height: auto;");
         $('#tpl_home').parallax("50%", 0.1);
-        $('#tpl_download').parallax("50%", 0.1);
+        $('#tpl_about').parallax("50%", 0.1);
     // IE broswer setting
     }else{
         $('#tpl_home').parallax("50%", 0.5);
-        $('#tpl_download').parallax("50%", 0.5);
+        $('#tpl_about').parallax("50%", 0.5);
     }
 });
