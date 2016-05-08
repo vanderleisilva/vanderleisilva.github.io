@@ -14,9 +14,8 @@ In the following lines I'll discuss a Santos City Hall case study that can answe
 ## Directory Structure
 We have different ways of thinking about directory organization, I've considered the two most commons: type organization and component organization.
 
-[image-type-organization]
-
-[image-component-organization]
+![Type organization](/images/posts/angularjs-a-case-study/1.png)
+![Component organization](/images/posts/angularjs-a-case-study/2.png)
 
 The first one, the most common, is a great solution for small projects, we can set up quickly, we have separation of concerns, controllers have their own folder, views have their own folder and so on. However this approach falls apart when the application starts growing and you start scrolling in your directory tree to find the required files and mainly you don't have a rapid understanding about the components of your system.
 
@@ -63,7 +62,7 @@ In an AngularJS context, modularization means an organization by function instea
 
 We essentially have separate “apps” within our application, each of which are independent and has your own objects.
 
-[image-structure folder]
+![Angular modularization](/images/posts/angularjs-a-case-study/3.jpg)
 
 This approach guarantee re-usability, a clear separation of concerns and testability to our applications.
 
