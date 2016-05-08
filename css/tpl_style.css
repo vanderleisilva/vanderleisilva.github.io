@@ -345,6 +345,10 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     line-height: 2.5em;
     color: #fff;
 }
+#tpl_contact form .has-error .fa{ color: red}
+#tpl_contact form .has-error .input-group-addon{ background-color: transparent; border-color: red}
+#tpl_contact form .has-error .form-control{ border-color: red}
+#tpl_contact form .has-error .form-control:focus{ border-color: red; }
 #tpl_contact form .form-group { margin-top: 30px;}
 #tpl_contact form input.form-control,
 #tpl_contact form button.form-control,
