@@ -2,8 +2,8 @@
 layout: post
 title: "AngularJS a Case Study"
 date: 2016-05-03
-description: "Any description!"
-icon: fa-pagelines
+description: "A public sector case study of AngularJS!"
+icon: fa-book
 highlight: 1
 ---
 

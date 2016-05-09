@@ -187,7 +187,7 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     margin: 50px 0 50px 0;
     font: normal normal 100 18px/40px 'Fira Sans', sans-serif;
 }
-#tpl_home p a {
+#tpl_home p a, #tpl_home p .highlight {
     background-color: rgba(255,255,255,.6);
     border-bottom: 1px dotted #000;
     text-decoration: none;
@@ -223,6 +223,11 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
 }
 #tpl_features p {
     padding-bottom: 30px;
+    text-align: center;
+}
+#tpl_features .feature-box p.title {
+    padding-bottom: 5px;
+	min-height:0;
     text-align: center;
 }
 #tpl_features .feature-box {

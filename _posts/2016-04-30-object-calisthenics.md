@@ -3,7 +3,7 @@ layout: post
 title: "Object Calisthenics"
 date: 2016-04-23
 description: "It's time to leverage our code quality, assure maintainability, readability, testability and comprehensibility! Lets calisthenic our objects!"
-icon: fa-music
+icon: fa-code
 highlight: 1
 ---
 

@@ -2,8 +2,8 @@
 layout: post
 title: "Code Smell - Dispensables"
 date: 2016-05-06
-description: "We struggle daily to find ways to reduce code complexity, than in order to response an hypothetical future needed we just start working in the opposite way. Do not do that!"
-icon: fa-pagelines
+description: "Some basic rules to reduce code complexity, let's talk about code (bad) smell!"
+icon: fa-bug
 highlight: 1
 ---
 
