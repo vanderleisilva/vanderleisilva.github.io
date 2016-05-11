@@ -7,7 +7,7 @@ icon: fa-book
 highlight: 1
 ---
 
-AngularJS is an important step towards a better client-side code structuring that allow us to work with a consistent MVC architecture. However the choise per se doesn't necessary imply a consistent code structuring, in terms of organization, code decoupling, testability and so on.
+AngularJS is an important step towards a better client-side code structuring that allow us to work with a consistent MVC architecture. However the choice per se doesn't necessary imply a consistent code structuring, in terms of organization, code decoupling, testability and so on.
 
 In the following lines I'll discuss a Santos City Hall case study that can answer relevant questions that came up to our minds when starting a new angular application.
 
