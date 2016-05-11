@@ -277,6 +277,7 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
 #tpl_about {
     background: url(../images/download_background.jpg) fixed;
 }
+#tpl_about .margin-bottom{ margin-bottom: 100px;}
 #tpl_about .highlight{
   background-color: rgba(255,255,255,.6);
   border-bottom: 1px dotted #000;
