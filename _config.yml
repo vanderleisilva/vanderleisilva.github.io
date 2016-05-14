@@ -1,3 +1,8 @@
 name: Vanderlei Silva, Horrible Cop
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+analytics :
+  provider : google
+  google :
+      tracking_id : 'UA-77747638-1'
+  
