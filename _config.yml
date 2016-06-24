@@ -1,3 +1,6 @@
-name: Vanderlei Silva, Horrible Cop
+name: Vanderlei Silva's blog
+url: http://vanderleisilva.github.io
+author: Vanderlei Silva
+email: vanderlei.alves.da.silva@gmail.com
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
