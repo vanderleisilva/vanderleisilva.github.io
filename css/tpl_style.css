@@ -326,6 +326,8 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     display: block;
     width: 260px;
 }
+#tpl_about .partners a{ color:white; display: inline; text-decoration: underline}
+#tpl_about .partners { margin-top: 40px; }
 #tpl_about .tpl_about_text_wapper {
     width: 100%;
     max-width: 550px;
