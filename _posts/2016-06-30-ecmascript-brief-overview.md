@@ -40,4 +40,5 @@ The Ecma [TC39](http://www.ecma-international.org/memento/TC39.htm) committee is
 * Read the [TC39 process document](https://tc39.github.io/process-document/);
 * [Register as a TC39 contributor](http://www.ecma-international.org/memento/register_TC39_Royalty_Free_Task_Group.php).
 
-[...]
+## The pillars of a great building
+ECMAScript establishes the pillars of a present and future great building constructed over javascript, expanding its usage, in a coherent way, of a script web language for almost everything. From server-side programming to internet of things. And the understand of its construction process is a key knowledge for every IT professional.
