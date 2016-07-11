@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "ECMAScript"
-date: 2016-06-30
+date: 2016-07-11
 description: "A brief overview of its history and semantic"
 icon: fa-share-alt
 highlight: 1
