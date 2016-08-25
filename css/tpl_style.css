@@ -300,6 +300,12 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     font-size: 56px;
     color:#233842;
 }
+/***** Portfolio *****/
+#tpl_portfolio {
+    background: url(../images/portfolio_background.jpg) fixed;
+    min-height: 600px;
+    padding-bottom: 130px;
+}
 /***** Download *****/
 #tpl_about {
     background: url(../images/download_background.jpg) fixed;
