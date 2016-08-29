@@ -238,6 +238,16 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     box-shadow: 0 0px 4px 0 rgba(255,255,255,0.98), 0 0px 12px 0 rgba(255,255,255,0.15); opacity: 0.8;
 }
 /***** Features *****/
+#tpl_features h4{
+    text-align: center;
+    color: white;
+}
+#tpl_features h4 a{
+    color: white;    
+}
+#tpl_features h4 a:hover{
+    text-decoration: underline;
+}
 #tpl_features {
     background: #455a64 url(../images/pattern_bg.png) fixed;
     padding-bottom: 130px;
