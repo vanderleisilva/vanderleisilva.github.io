@@ -3,10 +3,18 @@
 </div>
 <nav class="main-menu shadow-top-down">
 	<ul class="nav nav-pills nav-stacked">
-		<li><a class="scroll_effect" href="/">Home</a></li>
+		<li><a href="/">Home</a></li>
 		<li class="separator"></li>
 		{% for post in site.posts %}
-			<li><a class="scroll_effect" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+			
+			{% if forloop.index < 4 %}
+                <li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+            {% endif %}
+
+			{% if forloop.index == 4 %}
+				<li><a href="/blog" title="List of all articles">All articles ...</a></li>
+            {% endif %}
+			
 		{% endfor %}
 		<li class="separator"></li>
 		<li><a href="#tpl_contact" class="scroll_effect">Contact</a></li>
