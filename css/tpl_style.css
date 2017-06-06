@@ -417,9 +417,13 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
     max-width: 500px;
     width: 100%;
 }
+#tpl_contact .social li .npmicon {
+    margin-left: -3px;
+    margin-top: -3px;
+}
 #tpl_contact .social li {
     margin-left: 0;
-    width: 25%;
+    width: 20%;
 }
 #tpl_contact .social a {
     margin: 50px auto 4px auto;
@@ -442,6 +446,7 @@ nav.main-menu a:link, nav.main-menu a:hover, nav.main-menu a:focus, nav.main-men
 #tpl_contact .social .social-github { background: #28a9e0;}
 #tpl_contact .social .social-linkedin { background: #89adff;}
 #tpl_contact .social .social-slideshare { background: #cab9a9;}
+#tpl_contact .social .social-npm { background: red;}
 /***** Footer *****/
 footer {
     padding: 20px 0 16px 0;
