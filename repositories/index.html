@@ -17,6 +17,7 @@ title: "FrCode - Repositories"
           <p>
             <span>{{ repository.created_at | date_to_string }}</span> &raquo;
             <a href="{{ repository.html_url }}" target="_blanc" title="{{ repository.name }}">{{ repository.name}}</a>
+            &raquo; <a target="_blanc" href="{{ repository.downloads_url }}"><i class="fa fa-download" aria-hidden="true"></i></a>
           </p>
           <p class="description">
             {{ repository.description }}
