@@ -4,3 +4,4 @@ author: Vanderlei Silva
 email: vanderlei.alves.da.silva@gmail.com
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+gems: ['jekyll-github-metadata']
