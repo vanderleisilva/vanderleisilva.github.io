@@ -1,10 +1,9 @@
-/* 
 
-App Landing Template
+$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+});
 
-http://www.tpl.com/tm-474-app-landing
-
-*/
 jQuery(document).ready(function(){
     // jQuery.tpl_is_chrome
     $.tpl_is_chrome = /chrom(e|ium)/.test(navigator.userAgent.toLowerCase());
