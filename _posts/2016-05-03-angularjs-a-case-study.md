@@ -4,7 +4,7 @@ title: "AngularJS a Case Study"
 date: 2016-05-03
 description: "A public sector case study of AngularJS!"
 icon: fa-book
-highlight: 1
+highlight: 0
 ---
 
 AngularJS is an important step towards a better client-side code structuring that allow us to work with a consistent MVC architecture. However the choice per se doesn't necessary imply a consistent code structuring, in terms of organization, code decoupling, testability and so on.
