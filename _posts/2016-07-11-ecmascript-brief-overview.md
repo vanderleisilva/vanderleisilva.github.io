@@ -4,7 +4,7 @@ title: "ECMAScript"
 date: 2016-07-11
 description: "A brief overview of its history and semantic"
 icon: fa-share-alt
-highlight: 1
+highlight: 0
 ---
 
 One of the main obstacles faced by web developers during early days was the completely mess behavior between different browsers. Those days, web development was oriented to browsers. Thanks to ECMA and the community this challenging scenario has changed to a clear and solid language specification.
