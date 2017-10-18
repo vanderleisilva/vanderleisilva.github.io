@@ -49,6 +49,6 @@ The project was developed around the SCRUM concepts, so we step-by-step delivere
 As we mentioned before, this is just the beginning, in the next days we’re going to rebuild this interface using different tools and then create a real experience of what can we get with each one. We understand that tools like this are amazing to have a clue, but they are just numbers and evidences. We aim here, a real experience, so be ready for the next episodes.
 
 Subscribe our RSS feed and get updated.
-[Rafael Monteiro](http://rafaelmonteiro.github.io/feed.xml), [Vanderlei Silva](http://localhost:4000/blog/atom.xml)
+[Rafael Monteiro](http://rafaelmonteiro.github.io/feed.xml), [Vanderlei Silva](http://vanderleisilva.github.io/blog/atom.xml)
 
 Watch and stars us on [Github](https://github.com/vanderleisilva/pokemon-battle)!!
