@@ -15,7 +15,7 @@ This article is the first of a series about the main frontend frameworks and bac
  interfaces respond using different implementations.
 
 ## Get your pokémon
-First of all [check out](https://pokemon-battlevue.herokuapp.com/) our live demo Pokemon Battle and take a look at the [source code](https://github.com/vanderleisilva/pokemon-battle).
+First of all [check out](https://pokemon-battle-vue.herokuapp.com/) our live demo Pokemon Battle and take a look at the [source code](https://github.com/vanderleisilva/pokemon-battle).
 For this article we’re going to explore its construction focused on VueJS and PHP Lumen.
 
 ## Frontend
