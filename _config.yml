@@ -2,6 +2,8 @@ name: Vanderlei Silva's blog
 url: http://vanderleisilva.github.io
 author: Vanderlei Silva
 email: vanderlei.alves.da.silva@gmail.com
+telephone: +49 17686314967
+address: Ganghoferstraße 39, 80339 München - Germany 
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
 gems: ['jekyll-github-metadata']
