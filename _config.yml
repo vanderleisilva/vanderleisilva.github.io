@@ -11,4 +11,6 @@ gems:
   - jekyll-github-metadata
   - jekyll-multiple-languages-plugin
 
-languages: ['en', 'pt']
+languages: ['pt', 'en']
+
+exclude_from_localizations: ["_layouts"]
