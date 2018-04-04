@@ -11,3 +11,6 @@ pages:
   curriculum: Curriculum
 page-content:
   articles: Checkout all posted articles
+certifications:
+  scrum: Certified ScrumMaster®
+  microsoft: Microsoft Specialist Programming in HTML5 with JavaScript & CSS3 
