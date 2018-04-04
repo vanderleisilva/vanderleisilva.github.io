@@ -11,6 +11,12 @@ pages:
   curriculum: Curriculum
 page-content:
   articles: Visualizar todos os artigos postados
+  contact:
+    name: Nome
+    email: Email
+    telephone: Telefone
+    message: Mensagem
+    send: Enviar
 certifications:
   scrum: ScrumMaster® certicado
   microsoft: Programador Microsoft especialista em HTML5 com JavaScript e CSS3 
