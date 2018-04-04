@@ -1,2 +1,11 @@
 global:
   description: Front-end code that rocks! A free space for those fans of Front-end technologies.
+pages:
+  home: Home
+  articles: Articles
+  portfolio: Portfolio
+  about: About
+  presentations: Presentations
+  repositories: Repositories
+  contact: Contact
+  curriculum: Curriculum
