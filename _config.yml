@@ -4,11 +4,7 @@ author: Vanderlei Silva
 email: vanderlei.alves.da.silva@gmail.com
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
-
 baseurl: ""
-
-plugins: 
-  - jekyll-github-metadata
-  - jekyll-multiple-languages-plugin
-
+plugins: ["jekyll-github-metadata", "jekyll-multiple-languages-plugin"]
 languages: ['pt', 'en']
+exclude_from_localizations: ["css", "fonts", "images", "js"]

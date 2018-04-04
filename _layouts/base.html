@@ -15,10 +15,10 @@
 
 	<title>{{ page.title }}</title>
 	<!-- CSS -->
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/css/tpl_style.css">
-	<link rel="stylesheet" href="/css/hover-effect.css">
+	<link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl_root }}" />
+	<link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl_root }}" />
+	<link rel="stylesheet" href="{{ "/css/tpl_style.css" | prepend: site.baseurl_root }}" />
+	<link rel="stylesheet" href="{{ "/css/hover-effect.css" | prepend: site.baseurl_root }}" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.css" />
 	<!-- RSS feed -->
 	<link rel="alternate" type="application/rss+xml" href="/blog/atom.xml" title="{{ site.name }} - RSS" />
@@ -54,12 +54,12 @@
 		</div>
 	</footer>
 	<!-- require plugins -->
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/jquery-ui.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.parallax.js"></script>
-	<script src="/js/validator.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.js"></script>
+	<script href="{{ "/js/jquery.min.js"| prepend: site.baseurl_root }}"></script>
+	<script href="{{ "/js/jquery-ui.min.js"| prepend: site.baseurl_root }}"></script>
+	<script href="{{ "/js/bootstrap.min.js"| prepend: site.baseurl_root }}"></script>
+	<script href="{{ "/js/jquery.parallax.js"| prepend: site.baseurl_root }}"></script>
+	<script href="{{ "/js/validator.min.js"| prepend: site.baseurl_root }}"></script>
+	<script href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.js"></script>
 	<!-- template mo config script -->
 	<script src="/js/tpl_scripts.js"></script>
 </body>
