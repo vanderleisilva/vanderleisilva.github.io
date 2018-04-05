@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vanderleisilva/vanderleisilva.github.io.svg?branch=master)](https://travis-ci.org/vanderleisilva/vanderleisilva.github.io)
+
 vanderleisilva.github.io
 =====================
 **Hello one and all!**
