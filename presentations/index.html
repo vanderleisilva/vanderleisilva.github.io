@@ -1,7 +1,7 @@
 ---
 layout: base
 title: "FrCode - Presentations"
-description: "List of all published presentations"
+description: page-content.presentations.description
 ---
 
 {% include menu/articles.html %}
@@ -9,15 +9,15 @@ description: "List of all published presentations"
 <section id="tpl_element">
 	<div class="container">
 		<header class="template_header">
-			<h1>Presentations <small class="h1-small">{{ page.description }}</small></h1>
+			<h1>{% t pages.presentations %} <small class="h1-small">{% t page.description %}</small></h1>
 		</header>
 		<article class="row">
   			<div class="col-md-6">
-				<h2>ECMAScript<br /><small>history and semantic</small></h2>
+				<h2>ECMAScript<br /><small>{% t page-content.presentations.item1 %}</small></h2>
 				<iframe src="//www.slideshare.net/slideshow/embed_code/key/CmWtDUF3cyOoy4" width="595" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 			</div>
   			<div class="col-md-6">
-				<h2>Object Calisthenics<br /><small>programming best practices</small></h2>
+				<h2>Object Calisthenics<br /><small>{% t page-content.presentations.item2 %}</small></h2>
 				<iframe src="//www.slideshare.net/slideshow/embed_code/key/xxp9cmubMWiNBt" width="595" height="400" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 			</div>
 		</article>
