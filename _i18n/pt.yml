@@ -3,7 +3,7 @@ global:
 pages:
   home: Inicio
   articles: Artigos
-  portfolio: Portfolio
+  portfolio: Portfólio
   about: Sobre
   presentations: Apresentações
   repositories: Repositórios
@@ -17,6 +17,11 @@ page-content:
     telephone: Telefone
     message: Mensagem
     send: Enviar
+  porfolio:
+    item1: Uma simples solução para criação de newsletters.
+    item2: Uma interface de usuário iterativa para jogadores do jogo mastermind.
+    item3: Um e-commerce baseado em Wordpress que vende todos os tipo de botões.
+    viewmore: Mais detalhes
 certifications:
   scrum: ScrumMaster® certicado
   microsoft: Programador Microsoft especialista em HTML5 com JavaScript e CSS3 

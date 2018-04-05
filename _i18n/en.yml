@@ -17,6 +17,11 @@ page-content:
     telephone: Telephone
     message: Message
     send: Send
+  porfolio:
+    item1: An easy-to-use newsletter builder sollution.
+    item2: An interactive user interface designed to mastermind players.
+    item3: A Wordpress e-commerce based, that offers all kinds of buttons.
+    viewmore: View more
 certifications:
   scrum: Certified ScrumMaster®
   microsoft: Microsoft Specialist Programming in HTML5 with JavaScript & CSS3 
