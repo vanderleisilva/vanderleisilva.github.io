@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+	<title>Vanderlei Silva's blog</title>
+	<link href="http://localhost:4000/blog/atom.xml" rel="self"/>
+	<link href="http://localhost:4000/blog"/>
+	<updated>2018-04-05T17:31:27+02:00</updated>
+	<id>http://localhost:4000/blog</id>
+	<author>
+		<name>Vanderlei Silva</name>
+		<email>vanderlei.alves.da.silva@gmail.com</email>
+	</author>
+
+	
+	<entry>
+		<title>Batalha Pokémon</title>
+		<link href="http://localhost:4000/blog/2017/10/17/pokemon-battle"/>
+		<updated>2017-10-17T00:00:00+02:00</updated>
+		<id>http://localhost:4000/blog/2017/10/17/pokemon-battle</id>
+		<content type="html">&lt;p&gt;Coauthored with &lt;a href=&quot;http://rafaelmonteiro.github.io/&quot;&gt;Rafael Monteiro&lt;/a&gt; and &lt;a href=&quot;http://broncodev.com/&quot;&gt;Gabriel Olivério&lt;/a&gt;
+Contributors: &lt;a href=&quot;https://www.linkedin.com/in/danilo-bezerra/&quot;&gt;Danilo Bezerra&lt;/a&gt;, &lt;a href=&quot;http://diegosouza.github.io/&quot;&gt;Diego Souza&lt;/a&gt;, &lt;a href=&quot;http://broncodev.com/&quot;&gt;Gabriel&lt;/a&gt;, &lt;a href=&quot;http://rafaelmonteiro.github.io/&quot;&gt;Rafael Monteiro&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This article is the first of a series about the main frontend frameworks and backend technologies, which is based on a thematic project to show how these
+ interfaces respond using different implementations.&lt;/p&gt;
+
+&lt;h2 id=&quot;get-your-pokémon&quot;&gt;Get your pokémon&lt;/h2&gt;
+&lt;p&gt;First of all &lt;a href=&quot;https://pokemon-battle-vue.herokuapp.com/&quot;&gt;check out&lt;/a&gt; our live demo Pokemon Battle and take a look at the &lt;a href=&quot;https://github.com/vanderleisilva/pokemon-battle&quot;&gt;source code&lt;/a&gt;.
+For this article we’re going to explore its construction focused on VueJS and PHP Lumen.&lt;/p&gt;
+
+&lt;h2 id=&quot;frontend&quot;&gt;Frontend&lt;/h2&gt;
+&lt;p&gt;In few words VueJS was our first option to implement the interface because: it’s performatic, reactive, component driven and (maybe the main point, though some will argue that is subjective, it’s easy to learn and fast to implement) .&lt;/p&gt;
+
+&lt;p&gt;Great internet tools give us a clue of how fast VueJS is, &lt;a href=&quot;https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts/table.html&quot;&gt;check it out&lt;/a&gt;. Performance when talking about JS frameworks is often associated to ReactJS, but VueJS can be even faster, check this &lt;a href=&quot;https://medium.com/js-dojo/react-or-vue-which-javascript-ui-library-should-you-be-using-543a383608d&quot;&gt;amazing comparison&lt;/a&gt; between them.&lt;/p&gt;
+
+&lt;p&gt;When you pass a plain JavaScript object to a Vue instance as its data option, Vue will walk through all of its properties and convert them to getter/setters using Object.defineProperty. The getter/setters are invisible, but under the hood they enable Vue to perform dependency-tracking and change-notification when properties are accessed or modified. So with that we achieve in a easy way reactivity and data separation from the DOM.&lt;/p&gt;
+
+&lt;p&gt;It’s easy and fast to implement because is component based. There is no need to understand in depth design pattern and related stuffs (of course that is even better if you understand them, but is not a requirement to develop great applications with Vue). Every component is compounded by an html file (or any other html pre-processor) a css file (or any other pre-processor) and a js file (or again, any other pre-processor) and just that.&lt;/p&gt;
+
+&lt;h2 id=&quot;backend&quot;&gt;Backend&lt;/h2&gt;
+&lt;p&gt;We decided to go for Lumen (Laravel’s micro framework) as we had a previous experience with Laravel. So, we could get the benefits of Laravel’s core without increasing it’s bootstrap with structures that we would not use (in a restful API context).&lt;/p&gt;
+
+&lt;p&gt;Basically, 3 routes are provided:&lt;/p&gt;
+
+&lt;p&gt;Get all Pokémons
+Select player’s Pokémon
+Hit your opponent&lt;/p&gt;
+
+&lt;p&gt;The “heavy” part is when we do the calculations to determine how much damage your Pokemon will cause/receive. It considers the traditional Pokemon types advantages/disadvantages. Besides that, we’ve added the miss/critical situations, where a random value can make your Pokemon fail to cause damage into its opponent or do almost twice of its normal damage.&lt;/p&gt;
+
+&lt;p&gt;The Pokémons and their attacks were stored in a &lt;a href=&quot;https://github.com/rafaelmonteiro/pokemon-battle-lumen/blob/master/storage/app/pokemons.json&quot;&gt;separate JSON file&lt;/a&gt; and were implemented repositories to retrieve them by name and random ones. The &lt;a href=&quot;https://github.com/rafaelmonteiro/pokemon-battle-lumen/blob/master/app/Pokemon.php&quot;&gt;Pokemon class&lt;/a&gt; encapsulates the data retrieved by the &lt;a href=&quot;https://github.com/rafaelmonteiro/pokemon-battle-lumen/blob/master/app/Repositories/PokemonRepository.php&quot;&gt;PokemonRepository&lt;/a&gt; as well as providing the behavior of hitting another Pokémon. The type modifier and damage computation of inflicted attacks were implemented by specific classes. &lt;a href=&quot;https://github.com/rafaelmonteiro/pokemon-battle-lumen/blob/master/app/TypeModifierCalculator.php&quot;&gt;TypeModifierCalculator&lt;/a&gt; uses a &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Type/Type_chart&quot;&gt;type chart&lt;/a&gt; - multipliers that consider the inflicted attack type and the opponent Pokémon type to modify the caused damage. &lt;a href=&quot;https://github.com/rafaelmonteiro/pokemon-battle-lumen/blob/master/app/DamageCalculator.php&quot;&gt;DamageCalculator&lt;/a&gt; implements the &lt;a href=&quot;https://bulbapedia.bulbagarden.net/wiki/Damage&quot;&gt;official formula&lt;/a&gt;, which uses the &lt;a href=&quot;https://github.com/rafaelmonteiro/pokemon-battle-lumen/blob/master/app/TypeModifier.php&quot;&gt;TypeModifier&lt;/a&gt; returned by the &lt;a href=&quot;https://github.com/rafaelmonteiro/pokemon-battle-lumen/blob/master/app/TypeModifierCalculator.php&quot;&gt;TypeModifierCalculator&lt;/a&gt;. Tests were implemented for all significant classes in order to ensure their expected behavior, achieving 85% of test coverage.&lt;/p&gt;
+
+&lt;p&gt;We tried to follow as strict as possible the &lt;a href=&quot;https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)&quot;&gt;SOLID principles&lt;/a&gt; - the classes have only one responsibility, their behavior can be easily extended without modifying their code, they don’t need to implement unnecessary methods because they implement an interface and they are easily replaceable by their subtypes. This way we could ship a reliable and maintainable piece of software, with a score of 4.0 on &lt;a href=&quot;https://codeclimate.com/github/rafaelmonteiro/pokemon-battle-lumen&quot;&gt;Codeclimate&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;agile-methodology&quot;&gt;Agile methodology&lt;/h2&gt;
+&lt;p&gt;The project was developed around the SCRUM concepts, so we step-by-step delivered a plenty functional software. In each cycle new functionalities were added and existing ones improved. On that scenario code refactoring was a common practice.&lt;/p&gt;
+
+&lt;h2 id=&quot;keep-connected&quot;&gt;Keep connected&lt;/h2&gt;
+&lt;p&gt;As we mentioned before, this is just the beginning, in the next days we’re going to rebuild this interface using different tools and then create a real experience of what can we get with each one. We understand that tools like this are amazing to have a clue, but they are just numbers and evidences. We aim here, a real experience, so be ready for the next episodes.&lt;/p&gt;
+
+&lt;p&gt;Subscribe our RSS feed and get updated.
+&lt;a href=&quot;http://rafaelmonteiro.github.io/feed.xml&quot;&gt;Rafael Monteiro&lt;/a&gt;, &lt;a href=&quot;http://vanderleisilva.github.io/blog/atom.xml&quot;&gt;Vanderlei Silva&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Watch and stars us on &lt;a href=&quot;https://github.com/vanderleisilva/pokemon-battle&quot;&gt;Github&lt;/a&gt;!!&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Scrum no setor público</title>
+		<link href="http://localhost:4000/blog/2017/07/05/failing-fast-learning-fast"/>
+		<updated>2017-07-05T00:00:00+02:00</updated>
+		<id>http://localhost:4000/blog/2017/07/05/failing-fast-learning-fast</id>
+		<content type="html">&lt;p&gt;
+    This article is a brief study case of an agile development process implementation in a public sector. &lt;br/&gt;
+    Co-authored with: &lt;a href=&quot;http://rafaelmonteiro.github.io/&quot; target=&quot;_blank&quot;&gt;Rafael Monteiro&lt;/a&gt;.
+&lt;/p&gt;
+&lt;br/&gt;
+&lt;p&gt;
+    If you have an empirical process (one that is complex and/or not very well understood) we gotta be prepared to fail fast but learn even faster. 
+    And in a public sector, of course, it is not an exception. &lt;a href=&quot;https://www.gov.uk/service-manual/agile-delivery/agile-government-services-introduction#why-agile-is-better-for-services&quot; target=&quot;_blank&quot; &gt;See&lt;/a&gt; what UK government says about it.
+&lt;/p&gt;
+&lt;p&gt;
+    People tends to see government as a deviation from the norm - in some cases it really is, but it is not a rule -
+    and we believe that great part of the comprehension problems are related to that fact.
+&lt;/p&gt;
+&lt;p&gt;
+    Public sector needs to answer fast to changes - although this is not what we're used to - of laws, policies and external variables. 
+    They are constantly requiring efforts and decisions from the public managers. This happens more frequently in countries which are economically 
+    and politically unstable.
+&lt;/p&gt;
+&lt;p&gt;
+    First, check over the agile principles. Having these aspects in mind, the great challenge of its implementation is the mindset change.    
+&lt;/p&gt;
+&lt;h2&gt;Paradigm shift &lt;/h2&gt;
+&lt;p&gt;
+    The first obstacle is comprehend that IT processes - and here we are focusing in software development - works better (in most cases) 
+    using agile methodologies such as Scrum, instead of Waterfall models. This fact demands from managers a conceptual shift of the whole process.
+&lt;/p&gt;
+&lt;p&gt;
+    There is no point in planning the entire project at the beginning, considering that changes may occur - and they certainly will - 
+    and you can’t foresee the future, it will only make you spend precious time. It is better to deliver small but functional increments of 
+    your product more frequently instead. By doing that, you can fix detours and comprehension mistakes before they get too expensive or difficult to modify.
+&lt;/p&gt;
+&lt;h2&gt;Need of control&lt;/h2&gt;
+&lt;p&gt;
+    Another aspect that needs to change is the false sensation of control that managers have nowadays. They think that by seeing a bunch of
+    documentation artifacts they are in control of the project and protected against the several variables, including those human factors. 
+    If you are one of them I must tell you: no, you don’t.
+&lt;/p&gt;
+&lt;p&gt;
+    Scrum suggests self-organizing teams which means that there’s no need to anyone controlling or monitoring the developers.    
+&lt;/p&gt;
+&lt;p&gt;
+    It may shock some managers, but in our experience it’s proving a nice way to keep things going.    
+&lt;/p&gt;
+&lt;h2&gt;Implementation&lt;/h2&gt;
+&lt;p&gt;
+    Our first challenge to the scrum implementation was to structure the reduced team in a way which we could deal with legacy demands and new ones. 
+    At that time we had people associated with product development dealing with all kinds of requests, to coding from user support. 
+    This effort resulted in the following workflow:
+&lt;/p&gt;
+&lt;a href=&quot;/images/development-process-semapro.png&quot; data-toggle=&quot;lightbox&quot; class=&quot;highlight&quot;&gt;
+    &lt;img style=&quot;max-width:100%&quot; src=&quot;/images/development-process-semapro.png&quot; title=&quot;Development Process Chart&quot; alt=&quot;Development Process Chart&quot; /&gt;    
+&lt;/a&gt;
+&lt;p&gt;
+    So, we've separated the development team in 2 fronts: the “project” team and the “maintenance” one. The first is committed to the sprints 
+    and the second to keep the legacy running - here we're talking about bugfixes and some small changes.
+&lt;/p&gt;
+&lt;p&gt;
+    Ideally, teams will rotate their members after a specified period of time. We see this rotation as a great way to spread knowledge.    
+&lt;/p&gt;
+&lt;h2&gt;Adopted deviations&lt;/h2&gt;
+&lt;p&gt;
+    As deviations we see those practices that are far from the ideal scenario, but we’ve adopted as a way of transition from the current mindset to the agile one.
+&lt;/p&gt;
+&lt;p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            We still have business analysts working together with product owner (the idea is that these business guys work as product owners in a future);
+        &lt;/li&gt;
+        &lt;li&gt;
+            We are still not able to keep teams exclusively to projects, so at the end of each sprint, the product owner evaluates the demands and may 
+            redirect this team to another project.
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/p&gt;
+&lt;h2&gt;Feedback&lt;/h2&gt;
+&lt;p&gt;
+    In our first sprint review, our stakeholders were able to see the first release of the software and they did appreciate that, 
+    not only the software per se, but mainly the idea of having after two weeks (sprint adopted period) a new version of the system. 
+    Our clients, up to that moment, were used to deadlines measured in months.
+&lt;/p&gt;
+&lt;h2&gt;Fallbacks&lt;/h2&gt;
+&lt;p&gt;
+    As a &lt;a href=&quot;https://www.scrumalliance.org/community/articles/2008/september/what-is-definition-of-done-(dod)&quot; target=&quot;_blank&quot;&gt;definition of done&lt;/a&gt; to the first sprint we considered every task posted on the development and testing environment and with 
+    TDD or BDD implemented, however we only developed tests for critical operations. Therefore, as a technical debt we need to improve 
+    our code coverage in the future. 
+&lt;/p&gt;
+&lt;h2&gt;First results&lt;/h2&gt;
+&lt;p&gt;
+    With the agile adoption, our team got more focused and deliverables more reliable. Stakeholders, product owner, 
+    and developers working together has created an unified vision of the product, which generated in everyone a clear vision 
+    of how great our efforts had been. Not mentioning the bureaucracy reduction made by decision decentralization. &lt;/p&gt;
+&lt;/p&gt;
+&lt;p&gt;
+    Of course there is a lot of improvement to be done, but considering that Scrum endorses the concept of successive approximation we 
+    think that we're on the right track, failing in some aspects but in all of them learning even faster.
+&lt;/p&gt;
+&lt;h2&gt;Team members&lt;/h2&gt;
+&lt;p&gt;
+    &lt;a target=&quot;_blank&quot; href=&quot;https://www.linkedin.com/in/danilo-bezerra/&quot;&gt;Danilo Bezerra&lt;/a&gt;,
+    &lt;a target=&quot;_blank&quot; href=&quot;https://www.linkedin.com/in/gabriel-oliverio/&quot;&gt;Gabriel Olivério&lt;/a&gt;,
+    &lt;a target=&quot;_blank&quot; href=&quot;https://www.linkedin.com/in/lucassantosborges/&quot;&gt;Lucas Borges&lt;/a&gt;,
+    &lt;a target=&quot;_blank&quot; href=&quot;https://www.linkedin.com/in/rafaelfmonteiro/&quot;&gt;Rafael Monteiro&lt;/a&gt;,
+    &lt;a target=&quot;_blank&quot; href=&quot;https://www.linkedin.com/in/sandro-fonseca-39a11217/&quot;&gt;Sandro Fonseca&lt;/a&gt;,
+    &lt;a target=&quot;_blank&quot; href=&quot;http://www.linkedin.com/in/vanderlei-alves-da-silva&quot;&gt;Vanderlei Silva&lt;/a&gt;.
+&lt;/p&gt;
+&lt;h2&gt;Acknowledgement&lt;/h2&gt;
+&lt;p&gt;
+   We’d like to thanks &lt;a href=&quot;https://www.linkedin.com/company-beta/3178918/&quot; target=&quot;_blank&quot;&gt;Knowledge21&lt;/a&gt; and
+   &lt;a href=&quot;https://www.linkedin.com/in/rafaelsabbagh/&quot; target=&quot;_blank&quot;&gt;Rafael Sabbagh&lt;/a&gt; for training and support at the matter.
+&lt;/p&gt;
+&lt;br/&gt;
+&lt;h5&gt;References&lt;/h5&gt;
+&lt;p&gt;
+    &lt;a target=&quot;_blank&quot; href=&quot;https://www.ibm.com/blogs/think-leaders/marketing/fail-fast-learn-faster&quot;&gt;Fail Fast Learn Faster - IBM blogs&lt;/a&gt;&lt;br/&gt;
+    &lt;a target=&quot;_blank&quot; href=&quot;https://medium.com/the-u-s-digital-service/vets-gov-a-modern-software-development-environment-in-government-2a0ec8f0623a&quot;&gt;vets-gov-a-modern-software-development-environment-in-government&lt;/a&gt;&lt;br/&gt;
+    &lt;a target=&quot;_blank&quot; href=&quot;http://agilemanifesto.org/principles.html&quot;&gt;http://agilemanifesto.org/principles.html&lt;/a&gt;&lt;br/&gt;
+    &lt;a target=&quot;_blank&quot; href=&quot;https://www.gov.uk/service-manual/agile-delivery/agile-government-services-introduction#why-agile-is-better-for-services&quot;&gt;UK government&lt;/a&gt;
+&lt;/p&gt;</content>
+	</entry>
+	
+	<entry>
+		<title>ECMAScript</title>
+		<link href="http://localhost:4000/blog/2016/07/11/ecmascript-brief-overview"/>
+		<updated>2016-07-11T00:00:00+02:00</updated>
+		<id>http://localhost:4000/blog/2016/07/11/ecmascript-brief-overview</id>
+		<content type="html">&lt;p&gt;One of the main obstacles faced by web developers during early days was the completely mess behavior between different browsers. Those days, web development was oriented to browsers. Thanks to ECMA and the community this challenging scenario has changed to a clear and solid language specification.&lt;/p&gt;
+
+&lt;h2 id=&quot;ecma&quot;&gt;ECMA&lt;/h2&gt;
+&lt;p&gt;ECMA (European Computer International) is an industry association founded in 1961, dedicated to the standardization of information and communication systems. The organization is responsible for keeping ECMAScript specification.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%201st%20edition,%20June%201997.pdf&quot;&gt;ECMAScript first release&lt;/a&gt; was published in June 1997 after Netscape submitted JavaScript to the ECMA. The first release was based on Javascript (Netscape browser script implementation) and JScript (Microsoft browser script implementation).&lt;/p&gt;
+
+&lt;h2 id=&quot;specification-x-implementation&quot;&gt;Specification x Implementation&lt;/h2&gt;
+&lt;p&gt;Having that in mind, it gets clear the difference between ECMAScript and JavaScript. The first refers to the specification while the second for the implementation.&lt;/p&gt;
+
+&lt;p&gt;Study ECMAScript means look to the future of the language. The specification establishes the functionalities that browsers need to implement. &lt;a href=&quot;http://kangax.github.io/compat-table/es6/&quot;&gt;This compatibility table&lt;/a&gt;  shows the relation between ECMAScript functionalities and browsers compatibility.&lt;/p&gt;
+
+&lt;h2 id=&quot;ecmascript-6&quot;&gt;ECMAScript 6&lt;/h2&gt;
+&lt;p&gt;Also known as ES6, ECMAScript 2015, ES2015, &lt;a href=&quot;http://www.ecma-international.org/ecma-262/6.0/ECMA-262.pdf&quot;&gt;released on June 2015&lt;/a&gt;, is the sixth edition of the specification and it has implemented important features that will let the language more familiar for those with Java, C# and similar backgrounds.&lt;/p&gt;
+
+&lt;p&gt;Though these functionalities are considered, for most of the community, as a great evolution to the language, some argue that  &lt;a href=&quot;https://medium.com/javascript-scene/the-two-pillars-of-javascript-ee6f3281e7f3#.8ufnvhjle&quot;&gt;we’re constructing a mess&lt;/a&gt; and in certain aspects, in fact this make sense, in the trial of making a friendly language for everyone, we end up with something without purpose, with high complexity and hard to understand.&lt;/p&gt;
+
+&lt;h2 id=&quot;ecmascript-7&quot;&gt;ECMAScript 7&lt;/h2&gt;
+&lt;p&gt;The seventh edition, &lt;a href=&quot;http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf&quot;&gt;released on June 2016&lt;/a&gt;, meets the committee’s goal of an annual release for the specification. This version released the following functionalities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/tc39/Array.prototype.includes/&quot;&gt;Array.prototype.includes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/rwaldron/exponentiation-operator&quot;&gt;Exponentiation Operator&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/tc39/proposal-object-values-entries&quot;&gt;Object.values/Object.entries&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/tc39/proposal-string-pad-start-end&quot;&gt;String padding&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/ljharb/proposal-object-getownpropertydescriptors&quot;&gt;Object.getOwnPropertyDescriptors&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;contributing-to-ecmascript&quot;&gt;Contributing to ECMAScript&lt;/h2&gt;
+&lt;p&gt;The Ecma &lt;a href=&quot;http://www.ecma-international.org/memento/TC39.htm&quot;&gt;TC39&lt;/a&gt; committee is responsible for evolving the ECMAScript specification. Everyone who has a proposal for the specification needs to meet the following requirements:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Accept the TC39 &lt;a href=&quot;http://www.ecma-international.org/memento/Policies/Ecma_Policy_on_Submission_Inclusion_and_Licensing_of_Software.htm&quot;&gt;copyright&lt;/a&gt; and &lt;a href=&quot;http://www.ecma-international.org/memento/Policies/Ecma_Royalty-Free_Patent_Policy_Extension_Option.htm&quot;&gt;patent policies&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;Read the &lt;a href=&quot;https://tc39.github.io/process-document/&quot;&gt;TC39 process document&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ecma-international.org/memento/register_TC39_Royalty_Free_Task_Group.php&quot;&gt;Register as a TC39 contributor&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-pillars-of-a-great-building&quot;&gt;The pillars of a great building&lt;/h2&gt;
+&lt;p&gt;ECMAScript establishes the pillars of a present and future great building constructed over javascript, expanding its usage, in a coherent way, of a script web language for almost everything. From server-side programming to internet of things. And the understand of its construction process is a key knowledge for every IT professional.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Why hackathon</title>
+		<link href="http://localhost:4000/blog/2016/05/24/why-hackathon"/>
+		<updated>2016-05-24T00:00:00+02:00</updated>
+		<id>http://localhost:4000/blog/2016/05/24/why-hackathon</id>
+		<content type="html">&lt;p&gt;Have you already thought or even heard about it!? Have you already give it a try? If so, you’ll probably  understand my point here, if you didn’t then stay with me that I’ll show you how amazing and challenging this kind of event can be. So fellows, it’s time to get a ride on a hackathon!&lt;/p&gt;
+
+&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
+&lt;p&gt;Firstly let’s cover a lexical definition:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A planned hacking run that is intended to last for about a week with lots of hackers. The term was first used in 2005 by the Apache Foundation and the OpenBSD Project, among others.
+Well, you may not considered yourself as a hacker, and in fact nowadays the term is used in a more general way, just referring to any event when programmers / designers or any IT related professional meet each other (personally or remotely) to do collaborative tasks for a short period of time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;mastermind-up-to-48-hours&quot;&gt;Mastermind up to 48 hours&lt;/h2&gt;
+&lt;p&gt;Here it comes the challenge, in the past weekend I engaged an awesome &lt;a href=&quot;http://vanhackathon.devpost.com/?ref_content=default&amp;amp;ref_feature=challenge&amp;amp;ref_medium=portfolio&quot;&gt;hackathon&lt;/a&gt; which Canadian companies had posted projects to be developed in a weekend. Challenges for front-end, back-end and designers professionals.&lt;/p&gt;
+
+&lt;p&gt;My team has chosen the mastermind game challenge from &lt;a href=&quot;https://www.axiomzen.co/&quot;&gt;AxiomZen&lt;/a&gt;, a game that players are required to guess a secret code, which is consisted of 8 different or equal colored balls. &lt;a href=&quot;http://devpost.com/software/mastermind-2vieuc&quot;&gt;Checkout here the project&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We’ve developed a front-end application based on AngularJS, with some back-end functionalities made on &lt;a href=&quot;https://www.codeigniter.com/&quot;&gt;CodeIgniter&lt;/a&gt; and &lt;a href=&quot;https://www.mongodb.com/&quot;&gt;MongoDB&lt;/a&gt;, that consumes  AxiomZen API Rest.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-weve-learned&quot;&gt;What we’ve learned&lt;/h2&gt;
+&lt;p&gt;By having to deal with such a short time, we gotta be focused and disciplined. We’ve learned how to quickly answer to unexpected events and moreover trust in each other. And of course, by the end we could add a new item to our portfolio and experience as well.&lt;/p&gt;
+
+&lt;h2 id=&quot;now-is-your-turn&quot;&gt;Now is your turn&lt;/h2&gt;
+&lt;p&gt;For those that get excited with the idea, &lt;a href=&quot;http://devpost.com/hackathons&quot;&gt;Devpost&lt;/a&gt; is a great platform for playing hackathons, so just go there, chose your challenge, have fun and last but no least have a (lot) drinks of coffee. Cheers!!&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>AngularJS x jQuery</title>
+		<link href="http://localhost:4000/blog/2016/05/13/angularjs-jquery"/>
+		<updated>2016-05-13T00:00:00+02:00</updated>
+		<id>http://localhost:4000/blog/2016/05/13/angularjs-jquery</id>
+		<content type="html">&lt;p&gt;In this article I’ll be discussing the main differences between &lt;strong&gt;jQuery&lt;/strong&gt; and &lt;strong&gt;AngularJS&lt;/strong&gt;. And for that purpose I’ll be checking a brief overview, firstly their main characteristics, secondly their advantages and disadvantages and finally see the best way of using them. So let’s dive in!&lt;/p&gt;
+
+&lt;h2 id=&quot;characteristics&quot;&gt;Characteristics&lt;/h2&gt;
+&lt;p&gt;According to their websites, jQuery is a fast, small, and feature-rich JavaScript library, which provides an easy-to-use document traversal and manipulation, event handling, animation, and Ajax. AngularJS is a toolset for building the framework most suited to your application development.&lt;/p&gt;
+
+&lt;p&gt;Straight ahead jQuery is a library while AngularJS a toolset or framework, meaning they have distinctly goals and usage. While jQuery is focused on document traversal and manipulation, angularJS goes beyond implementing not just it but also a completely MVC environment to your front-end code.&lt;/p&gt;
+
+&lt;h2 id=&quot;jquery---advantages--disadvantages&quot;&gt;jQuery - advantages / disadvantages&lt;/h2&gt;
+&lt;p&gt;Browser compatibility is the key word nowadays related with jQuery, of course that there is some secondary advantages such as performance and learning curve, which sometimes is quite hard to measure, anyway if we compare to AngularJS, mainly due to their different conceptions, jQuery has a relevant advantage on those aspects.&lt;/p&gt;
+
+&lt;p&gt;Document traversal has been for over years one of the greatest advantages of the library, however as time goes by, browsers support for document traversing has significantly improved. &lt;a href=&quot;http://youmightnotneedjquery.com/&quot;&gt;Check out this great site&lt;/a&gt; which shows jQuery functionalities written in pure javascript.&lt;/p&gt;
+
+&lt;p&gt;JQuery syntax for document traversal is considerable reduced comparing to vanilla javascript, even though native methods use to be much &lt;strong&gt;faster&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;angular---advantages--disadvantages&quot;&gt;Angular - advantages / disadvantages&lt;/h2&gt;
+&lt;p&gt;Instead of giving you APIs to work with DOM, AngularJS gives you data-binding, templating, custom components, structures and concepts that apply across various projects, like Controllers, Services and Directives.&lt;/p&gt;
+
+&lt;p&gt;Admittedly angularJS has a considerable learning curve, however the benefits in terms of front-end code quality justifies its required initial effort.&lt;/p&gt;
+
+&lt;p&gt;AngularJS is made upon software object oriented design best practices, such as &lt;a href=&quot;http://www.blackwasp.co.uk/gofpatterns.aspx&quot;&gt;design patterns&lt;/a&gt;, &lt;a href=&quot;https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design&quot;&gt;SOLID principles&lt;/a&gt; and so on. Thus is a great idea, before using angularJS, having in mind the core concepts of those patterns.&lt;/p&gt;
+
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;AngularJS is a framework for building applications; jQuery is a library for simplifying &lt;em&gt;“HTML document traversal and manipulation, event handling, animation, and Ajax”&lt;/em&gt;. This is the fundamental difference between them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;AngularJS is about architecture of applications, not augmenting HTML pages.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Having said that, jQuery is great for building small websites, blogs and simple apps, but if your thinking about rich web app, such as single page application, or defining a front-end framework basis, then AngularJS is what you need.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Code Smell - Dispensables</title>
+		<link href="http://localhost:4000/blog/2016/05/06/code-smell-dispensables"/>
+		<updated>2016-05-06T00:00:00+02:00</updated>
+		<id>http://localhost:4000/blog/2016/05/06/code-smell-dispensables</id>
+		<content type="html">&lt;p&gt;We struggle daily to find ways to reduce code complexity, than in order to response an hypothetical future requirement we just start working in the opposite way. Do not do that! &lt;a href=&quot;http://xp.c2.com/YouArentGonnaNeedIt.html&quot;&gt;You Are not Gonna Need It&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Always implement things when you actually need them, never when you just foresee that you need them.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;dispensable&quot;&gt;Dispensable&lt;/h2&gt;
+
+&lt;p&gt;A dispensable is something irrelevant and unnecessary whose absence would make the code cleaner, more efficient, easier to understand and mainly it’s a great time saving!&lt;/p&gt;
+
+&lt;p&gt;It’s one of the easiest understanding &lt;a href=&quot;http://martinfowler.com/bliki/CodeSmell.html&quot;&gt;code smell&lt;/a&gt;, and at the same time, one of the most commons. It’s composed by Speculative Generality, Dead Code, Duplicate Code, Data class and Lazy class.&lt;/p&gt;
+
+&lt;p&gt;Lights on that we’re about to start our trip into Code More and Do Less!&lt;/p&gt;
+
+&lt;h2 id=&quot;speculative-generality&quot;&gt;Speculative Generality&lt;/h2&gt;
+&lt;p&gt;Do not try to solve the world’s problem in a single day. This a common discussion when we are modeling a new system. We have a bunch of forecasters previewing all possible future situations. However it all boils down in either:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;you don’t need it after all;
+what you actually need is quite different from what you foresaw needing earlier;&lt;/li&gt;
+  &lt;li&gt;This doesn’t mean you should avoid building flexibility into your code. It means you shouldn’t over engineer something based on what you think you might need later on.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This concern is what XP methodology calls &lt;a href=&quot;http://xp.c2.com/YouArentGonnaNeedIt.html&quot;&gt;You Are not Gonna Need It&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;dead-code&quot;&gt;Dead Code&lt;/h2&gt;
+&lt;p&gt;Ruthlessly delete code that isn’t being used. That’s why we have source control systems!&lt;/p&gt;
+
+&lt;p&gt;If you have a variable, parameter, field, method or class that is no longer used, please remove them, this simple action will save a lot of time and let things easier to the next responsible for maintaining this code.&lt;/p&gt;
+
+&lt;h2 id=&quot;comments&quot;&gt;Comments&lt;/h2&gt;
+&lt;p&gt;Comments overload if often a sign of complex code and this usually means code smell, specially a &lt;a href=&quot;https://sourcemaking.com/refactoring/smells/bloaters&quot;&gt;bloaters code smell&lt;/a&gt;. Having this is mind, if you still fell the need of comments,  be care about the way you write your comments. There’s a fine line between comments that illuminate and comments that obscure. Do they explain “why” and not “what”?&lt;/p&gt;
+
+&lt;p&gt;And remember, you’re writing comments for people, not for machines.&lt;/p&gt;
+
+&lt;h2 id=&quot;duplicate-code&quot;&gt;Duplicate Code&lt;/h2&gt;
+&lt;p&gt;Do not do the same work twice, computers work for you and not the opposite. We have different reasons for code duplication:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Programmers working on different parts of the same program at the same time;&lt;/li&gt;
+  &lt;li&gt;Rushing to meet deadlines we may not resist to the temptation of copying and pasting a existent relevant code;&lt;/li&gt;
+  &lt;li&gt;Specific parts of code look different but actually perform the same job.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Though going through this process may be challenging, this is what makes our code rocks! Let’s do that!.&lt;/p&gt;
+
+&lt;h2 id=&quot;data-class&quot;&gt;Data class&lt;/h2&gt;
+&lt;p&gt;There is no reason for a class without behavior. A class that is only a data front-end to others, basically implementing getters and setters, it doesn’t make sense.&lt;/p&gt;
+
+&lt;p&gt;If this is the case, look forward the client’s code, you may find functionality that would be better located in the data class itself.&lt;/p&gt;
+
+&lt;h2 id=&quot;lazy-class&quot;&gt;Lazy class&lt;/h2&gt;
+&lt;p&gt;Continuing the previews way of thinking, if you, after looking forward the client’s code, didn’t find any relevant code for your class,and than that class doesn’t do enough to earn your attention, it should be deleted.&lt;/p&gt;
+
+&lt;p&gt;Components that are near-useless should be given the &lt;a href=&quot;https://sourcemaking.com/refactoring/inline-class&quot;&gt;Inline Class&lt;/a&gt; treatment.&lt;/p&gt;
+
+&lt;h2 id=&quot;in-brief&quot;&gt;In brief&lt;/h2&gt;
+&lt;p&gt;Here are the basic actions made for each problem, &lt;em&gt;let’s code that&lt;/em&gt;!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Speculative &lt;strong&gt;generality: make what is need&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;Dead code: &lt;strong&gt;remove them&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;Comments: &lt;strong&gt;create code self-explained&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;Duplicate code: &lt;strong&gt;remove them&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;Data class: &lt;strong&gt;Avoid classes that passively store data&lt;/strong&gt;;&lt;/li&gt;
+  &lt;li&gt;Lazy class: &lt;strong&gt;remove them&lt;/strong&gt;;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>AngularJS a Case Study</title>
+		<link href="http://localhost:4000/blog/2016/05/03/angularjs-a-case-study"/>
+		<updated>2016-05-03T00:00:00+02:00</updated>
+		<id>http://localhost:4000/blog/2016/05/03/angularjs-a-case-study</id>
+		<content type="html">&lt;p&gt;AngularJS is an important step towards a better client-side code structuring that allow us to work with a consistent MVC architecture. However the choice per se doesn’t necessary imply a consistent code structuring, in terms of organization, code decoupling, testability and so on.&lt;/p&gt;
+
+&lt;p&gt;In the following lines I’ll discuss a Santos City Hall case study that can answer relevant questions that came up to our minds when starting a new angular application.&lt;/p&gt;
+
+&lt;h2 id=&quot;directory-structure&quot;&gt;Directory Structure&lt;/h2&gt;
+&lt;p&gt;We have different ways of thinking about directory organization, I’ve considered the two most commons: type organization and component organization.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/angularjs-a-case-study/1.png&quot; alt=&quot;Type organization&quot; /&gt;
+&lt;img src=&quot;/images/posts/angularjs-a-case-study/2.png&quot; alt=&quot;Component organization&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first one, the most common, is a great solution for small projects, we can set up quickly, we have separation of concerns, controllers have their own folder, views have their own folder and so on. However this approach falls apart when the application starts growing and you start scrolling in your directory tree to find the required files and mainly you don’t have a rapid understanding about the components of your system.&lt;/p&gt;
+
+&lt;p&gt;In the component organization structure each component here will resemble a mini-MVC application by having a view, controller, services and the other required angular components for that feature. Going on this way we achieve a high level of scalability and testability on our application.&lt;/p&gt;
+
+&lt;p&gt;For further reading  that is an interesting article on &lt;a href=&quot;https://scotch.io/tutorials/angularjs-best-practices-directory-structure&quot;&gt;scotch.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;task-runner&quot;&gt;Task runner&lt;/h2&gt;
+&lt;p&gt;Why to use task runners? Here are some good answers:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/web/tools/setup/setup-preprocessors&quot;&gt;CSS and JS pre-processors compilation&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;JS concatenating/minifying files;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.javascriptlint.com/&quot;&gt;Linting javascript&lt;/a&gt;;&lt;/li&gt;
+  &lt;li&gt;Browser live-reload;&lt;/li&gt;
+  &lt;li&gt;Run tests.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Having in mind their needed, it comes up to our minds which one to choose and how to structure them to achieve the mention results? Scaffold is what I’m talking about.&lt;/p&gt;
+
+&lt;h2 id=&quot;scaffold&quot;&gt;Scaffold&lt;/h2&gt;
+&lt;p&gt;Though javascript frameworks are basically a single or a couple of js files, some of them, like EmberJs, comes out of the box with a completely project basis (task runners, command line utilities, and so on ..)  inside it. This is not a reality for AngularJS.&lt;/p&gt;
+
+&lt;p&gt;This fact can cause some problems concerning about the best approach  to set up a project-basis, I mean, questions related about which directory structuring, task runner, css and js preprocessor, test tools and etc. For this question there is an awesome tool called &lt;a href=&quot;http://yeoman.io/&quot;&gt;yeoman.io&lt;/a&gt; which is a scaffolding tool for modern web apps. There we can find scaffold for a great variety of technologies.&lt;/p&gt;
+
+&lt;p&gt;In this project I’ve chosen &lt;a href=&quot;https://github.com/Swiip/generator-gulp-angular&quot;&gt;angular-gulp-generator&lt;/a&gt; a scaffold that has solved my team needs having in it component directory orientation, ECMAscript 6 support through babel preprocessor, full support to the main css preprocessors (less, sass and stylus) and so on. Basically we just gotta go there and choose that one which most meet our needs.&lt;/p&gt;
+
+&lt;h2 id=&quot;single-page-application&quot;&gt;Single page application&lt;/h2&gt;
+&lt;p&gt;Usability is, with no doubts, one of the main concerns in every project and it’s an item that affects directly how great the system will be evaluated for their users. Single page apps allow us to offer a more-native-app-like experience to them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Single page apps are distinguished by their ability to redraw any part of the user interface without requiring a server round-trip to retrieve HTML.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In the early days this approach was a great challenge and usually your implementation it boils down to &lt;a href=&quot;http://martinfowler.com/bliki/CodeSmell.html&quot;&gt;code smell&lt;/a&gt; architecture. Luckily those days are gone, and thanks to AngularJS and others, this implementation nowadays sounds more natural. In fact most MVC js frameworks are built based on this concept.&lt;/p&gt;
+
+&lt;p&gt;To further reading there is an awesome article on &lt;a href=&quot;http://singlepageappbook.com/&quot;&gt;http://singlepageappbook.com/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;front-end-independence&quot;&gt;Front-end Independence&lt;/h2&gt;
+&lt;p&gt;Developing an app based on the concept above, lead us to think about a clear separation of concerns about front-end and back-end, so independence here is the key word.&lt;/p&gt;
+
+&lt;p&gt;Once we’ve achieved that goal those projects (front and back-end) can grow independently and act in different contexts. For instance a back-end solution can be used in a web, mobile and desktop interface. And a front-end solution can work with different back-end technologies.&lt;/p&gt;
+
+&lt;p&gt;As a technology used to reach it, &lt;a href=&quot;http://rest.elkstein.org/&quot;&gt;REST&lt;/a&gt; was the choice. It’s a lightweight alternative to mechanisms like RPC (Remote Procedure Calls) and Web Services (SOAP, WSDL, and others). It relies on a stateless, client-server, cacheable communications protocol – and in virtually all cases, the HTTP protocol is used.&lt;/p&gt;
+
+&lt;h2 id=&quot;modularization&quot;&gt;Modularization&lt;/h2&gt;
+&lt;p&gt;In an AngularJS context, modularization means an organization by function instead of type. Your components (controllers, filters, directives …) will live in modules instead of wherever they live now.&lt;/p&gt;
+
+&lt;p&gt;We essentially have separate “apps” within our application, each of which are independent and has your own objects.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/angularjs-a-case-study/3.jpg&quot; alt=&quot;Angular modularization&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This approach guarantee re-usability, a clear separation of concerns and testability to our applications.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Those are same basic steps, made in a public organization context, to set up quickly, a new web project-basis, and though you may have different needs, it represents a good workflow to starting a project-basis with angularJS.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Object Calisthenics</title>
+		<link href="http://localhost:4000/blog/2016/04/23/object-calisthenics"/>
+		<updated>2016-04-23T00:00:00+02:00</updated>
+		<id>http://localhost:4000/blog/2016/04/23/object-calisthenics</id>
+		<content type="html">&lt;p&gt;When I first started coding, turning back some ten years ago, my main concern was to see my code working, by that time the understanding of working that I had, means the result be the expected one or in other words: answer what should be done. However day by day, that concerned has changed. I’ve added a second question to my development life-cycle: How development should be done, structured.&lt;/p&gt;
+
+&lt;p&gt;Object calisthenics show us, in an objective way, translated in nine programming best practices rules, a guide that we can follow to keep our code clean.&lt;/p&gt;
+
+&lt;p&gt;By best practices we can understand as a description of a standard way of doing things, in our context, coding, however not necessary means, the only way of doing that. Though in most cases this alternative approach can be considered &lt;a href=&quot;http://martinfowler.com/bliki/CodeSmell.html&quot;&gt;code smell&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;By clean code we can have different definitions, having some differences from one author to another, for this article I’ll assume code clean as a code:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Easy to understand;&lt;/li&gt;
+  &lt;li&gt;Easy to modify;&lt;/li&gt;
+  &lt;li&gt;Easy to test;&lt;/li&gt;
+  &lt;li&gt;Works correctly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;definition&quot;&gt;Definition&lt;/h2&gt;
+&lt;p&gt;Object Calisthenics are programming exercises, invented by Jeff Bay in his book &lt;a href=&quot;http://pragprog.com/book/twa/thoughtworks-anthology&quot;&gt;The ThoughtWorks Anthology&lt;/a&gt;. The term Object is related to Object Oriented Programming and Calisthenics derived from Greek, meaning exercises under the context of gymnastics.&lt;/p&gt;
+
+&lt;p&gt;Although the term was first used in a Java development context, these rules are not dependent on any specific technology and yes, of course, as the name makes clear, dependent on an object oriented architecture.&lt;/p&gt;
+
+&lt;h2 id=&quot;rules&quot;&gt;Rules&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Only One Level Of Indentation Per Method&lt;/li&gt;
+  &lt;li&gt;Don’t Use The ELSE Keyword&lt;/li&gt;
+  &lt;li&gt;Wrap All Primitives And Strings&lt;/li&gt;
+  &lt;li&gt;One Dot Per Line&lt;/li&gt;
+  &lt;li&gt;Don’t Abbreviate&lt;/li&gt;
+  &lt;li&gt;Keep All Entities Small&lt;/li&gt;
+  &lt;li&gt;No Classes With More Than Two Instance Variables&lt;/li&gt;
+  &lt;li&gt;First Class Collections&lt;/li&gt;
+  &lt;li&gt;No Getters/Setters/Properties&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;only-one-level-of-indentation-per-method&quot;&gt;Only One Level Of Indentation Per Method&lt;/h2&gt;
+&lt;p&gt;We start our exercise looking at the number of indentations in our code, this rule is extremely related with &lt;a href=&quot;http://refactoring.com/catalog/extractMethod.html&quot;&gt;Extract method design pattern&lt;/a&gt;, actually their goals are the same.&lt;/p&gt;
+
+&lt;p&gt;We won’t reduce the line code’s number, but we will first increase readability and testability and second reduce the complexity of our methods in a significant way:&lt;/p&gt;
+
+&lt;h2 id=&quot;dont-use-the-else-keyword&quot;&gt;Don’t Use The ELSE Keyword&lt;/h2&gt;
+&lt;p&gt;Every programmer understand the importance of the if-else-conditional structure and their simplicity. But the main ideal of this rule is to avoid complex conditional structures. Nearly every programmer has seen a nasty nested conditional that’s impossible to follow or a case statement that goes on for pages. Even worse, it is all too easy to simply add another branch to an existing conditional rather than factoring to a better solution.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/object-calisthenics/1.png&quot; alt=&quot;Don't Use The ELSE Keyword&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the image above we have three distinct solutions. The first clearly shows a &lt;a href=&quot;http://martinfowler.com/bliki/CodeSmell.html&quot;&gt;code smell&lt;/a&gt; and also runs against the &lt;a href=&quot;http://www.oodesign.com/open-close-principle.html&quot;&gt;open-closed principle&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The second uses the early return approach which is the best option for the simplest structures, though is &lt;a href=&quot;http://www.yegor256.com/2015/08/18/multiple-return-statements-in-oop.html&quot;&gt;not considered a best practice in a pure object-oriented world&lt;/a&gt; for some authors and still runs against the &lt;a href=&quot;http://www.oodesign.com/open-close-principle.html&quot;&gt;open-closed principle&lt;/a&gt;, is considerable less verbose, better readable, and faster.&lt;/p&gt;
+
+&lt;p&gt;The third solution, probably the best for the most cases, uses the &lt;a href=&quot;http://www.oodesign.com/strategy-pattern.html&quot;&gt;strategy behavioral pattern&lt;/a&gt;, that makes use of polymorphism through the use of interfaces,  attending to the open-closed principle and also attending to our purposed exercise.&lt;/p&gt;
+
+&lt;h2 id=&quot;wrap-all-primitives-and-strings&quot;&gt;Wrap All Primitives And Strings&lt;/h2&gt;
+&lt;p&gt;As mentioned by Jeff Bay on The Thought Works Anthology:&lt;/p&gt;
+
+&lt;p&gt;“An int on its own is just a scalar with no meaning. When a method takes an int as a parameter, the method name needs to do all the work of expressing the intent. If the same method takes an hour as a parameter, it’s much easier to see what’s happening. Small objects like this can make programs more maintainable, since it isn’t possible to pass a year to a method that takes an hour parameter”&lt;/p&gt;
+
+&lt;p&gt;So the basic idea is: If your primitive type has a behaviors, you must encapsulate it or a &lt;a href=&quot;https://sourcemaking.com/refactoring/smells/primitive-obsession&quot;&gt;primitive obsession&lt;/a&gt; code smell can appear on your code.&lt;/p&gt;
+
+&lt;h2 id=&quot;one-dot-per-line&quot;&gt;One Dot Per Line&lt;/h2&gt;
+&lt;p&gt;The main ideal here is to achieve high cohesion, build your class, method or any algorithm with a well defined job and of course with a &lt;a href=&quot;http://www.oodesign.com/single-responsibility-principle.html&quot;&gt;single responsability&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;But when we talk about responsibility, sometimes can be hard to define what is inside one class and what goes to the other, specially when we have generic names like UserService or SystemService, so first try avoid those names.&lt;/p&gt;
+
+&lt;p&gt;It is the direct use of the &lt;a href=&quot;http://c2.com/cgi/wiki?LawOfDemeter&quot;&gt;Law of Demeter&lt;/a&gt;, saying only talk to your immediate friends, and don’t talk to strangers.&lt;/p&gt;
+
+&lt;p&gt;The idea is to avoid constructions like below:&lt;/p&gt;
+
+&lt;p&gt;** father.getChild().setAge(10); **&lt;/p&gt;
+
+&lt;p&gt;And than became:&lt;/p&gt;
+
+&lt;p&gt;** father.setChildAge(10); **&lt;/p&gt;
+
+&lt;p&gt;The above is a very simple case, but image a situation with a three, four or more levels like: ** a.getB().getC().getD().getE().doSomething() ** would be terrible to understand and  to test this code.&lt;/p&gt;
+
+&lt;p&gt;This rule doesn’t apply to &lt;a href=&quot;http://modernweb.com/2013/05/20/fluent-apis-and-method-chaining/&quot;&gt;Fluent Interfaces&lt;/a&gt; and more generally to anything implementing the &lt;a href=&quot;http://martinfowler.com/dslCatalog/methodChaining.html&quot;&gt;Method Chaining Pattern&lt;/a&gt; (e.g. a Query Builder).&lt;/p&gt;
+
+&lt;h2 id=&quot;do-not-abbreviate&quot;&gt;Do not Abbreviate&lt;/h2&gt;
+&lt;p&gt;We have two main reasons to abbreviate:&lt;/p&gt;
+
+&lt;p&gt;Are you typing the same word over and over again? If that’s the case, perhaps your method is used too heavily, and you are missing opportunities to remove duplication;&lt;/p&gt;
+
+&lt;p&gt;Are your method names getting long? This might be a sign of a misplaced responsibility or a missing class.&lt;/p&gt;
+
+&lt;p&gt;This exercise establishes method or class names with one or two words without abbreviations and without context duplication, for instance if your class is named Client, a method name getClient is a context duplication.&lt;/p&gt;
+
+&lt;h2 id=&quot;keep-all-entities-small&quot;&gt;Keep All Entities Small&lt;/h2&gt;
+&lt;p&gt;Classes up to 50 lines and packages with no more than 10 classes. Some will say why 50? or why 10 classes? The easiest answer is: It’s just a number, a number for we measure our achievement. You can just define another, some argue that up to 150 lines is a good number.&lt;/p&gt;
+
+&lt;p&gt;The main idea here is to keep entities small, because large classes usually do more than one thing, which makes them harder to understand and harder to reuse. This is also described as a code smell: &lt;a href=&quot;https://sourcemaking.com/refactoring/smells/large-class&quot;&gt;large classes&lt;/a&gt; and &lt;a href=&quot;https://sourcemaking.com/refactoring/smells/long-method&quot;&gt;long methods&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;no-classes-with-more-than-two-instance-variables&quot;&gt;No Classes With More Than Two Instance Variables&lt;/h2&gt;
+&lt;p&gt;The hardest and indigested one, create classes with no more than two instance variables is based on the idea that a class can have only two types: those that maintain the state of a single instance variable and those that coordinate two separate variables.&lt;/p&gt;
+
+&lt;p&gt;Specially for those that came from &lt;a href=&quot;http://tratt.net/laurie/research/pubs/html/tratt__dynamically_typed_languages/&quot;&gt;dynamically typed languages&lt;/a&gt; like me things became even worst, some authors argue that for those languages five is considerable an ideal number.&lt;/p&gt;
+
+&lt;p&gt;It all boils down to decomposing complex structures into smallest ones, so choose your number and be consistent.&lt;/p&gt;
+
+&lt;h2 id=&quot;first-class-collections&quot;&gt;First Class Collections&lt;/h2&gt;
+&lt;p&gt;This rule is an extension of Wrap All Primitives And Strings, and the idea is the same, each collection gets wrapped in its own class than every behavior related to them, now have a home (e.g. filter methods, applying a rule to each element).&lt;/p&gt;
+
+&lt;h2 id=&quot;no-getterssettersproperties&quot;&gt;No Getters/Setters/Properties&lt;/h2&gt;
+&lt;p&gt;In a first sight, maybe looks weird, disallow a very common practice of creating getters and setters for almost all properties, however the basic idea here is avoid constructions like below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/object-calisthenics/2.png&quot; alt=&quot;No Getters/Setters/Properties&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Because we’re removing from the class their responsibility. The idea behind strong encapsulation boundaries is to force programmers working on the code after you leave it to look for and place behavior into a single place in the object model. The code above should look like above:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/object-calisthenics/3.png&quot; alt=&quot;No Getters/Setters/Properties&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;In conclusion these rules are all about writing maintainable code, they are an important and precise tool in which you can increase your software code quality. At first probably will be a great challenge but at the end the result will be awesome.&lt;/p&gt;
+</content>
+	</entry>
+	
+
+</feed>

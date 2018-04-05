@@ -10,3 +10,4 @@ baseurl: ""
 plugins: ["jekyll-github-metadata", "jekyll-multiple-languages-plugin"]
 languages: ['en', 'pt']
 exclude_from_localizations: ["css", "fonts", "images", "js"]
+destination: docs
