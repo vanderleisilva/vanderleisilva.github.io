@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Pokémon Battle"
+title: "Batalha Pokémon"
 date: 2017-10-17
-description: "Learning about JS frontend and backend technologies with Pokémons"
+description: "Aprendendo sobre tecnologias frontend e backend com Pokémons"
 icon: fa-share-alt
 highlight: 1
 ---

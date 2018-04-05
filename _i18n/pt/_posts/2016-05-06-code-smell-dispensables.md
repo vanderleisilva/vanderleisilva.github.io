@@ -2,7 +2,7 @@
 layout: post
 title: "Code Smell - Dispensables"
 date: 2016-05-06
-description: "Some basic rules to reduce code complexity, let's talk about code (bad) smell!"
+description: "Algumas regras básicas para redução de complexidade na codificação, vamos falar sobre code smell!"
 icon: fa-bug
 highlight: 1
 ---
