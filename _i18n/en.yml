@@ -1,3 +1,5 @@
+language: English
+change-language: Change language
 global:
   title: Front-end code that rocks! A free space for those fans of Front-end technologies.
 pages:
