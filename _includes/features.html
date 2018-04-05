@@ -1,7 +1,7 @@
 <section id="tpl_features">
 	<div class="container-fluid">
 		<header class="template_header">
-			<h1 class="text-center"><span>...</span> Articles <span>...</span></h1>
+			<h1 class="text-center"><span>...</span> {% t pages.articles %} <span>...</span></h1>
 		</header>
 		<div class="col-sm-12">
 			{% for post in site.posts %}
@@ -22,6 +22,6 @@
 				{% endif %}
 			{% endfor %}
 		</div>
-		<h4>Checkout all <a href="/blog">posted articles</a></h4>
+		<h4><a href="/blog">{% t page-content.articles %}</a></h4>
 	</div>
 </section>

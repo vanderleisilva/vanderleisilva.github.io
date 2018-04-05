@@ -3,12 +3,12 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<header class="template_header">
-					<h1 class="text-center"><span>...</span> Contact <span>...</span></h1>
+					<h1 class="text-center"><span>...</span> {% t pages.contact %} <span>...</span></h1>
 				</header>
 				<p class="text-center">
 					<i class="fa fa-map-marker"></i> {{ site.address }}<br />
-					<i class="fa fa-envelope"></i> Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a><br />
-					<i class="fa fa-phone"></i> Phone: <a href="#">{{ site.telephone }}</a>
+					<i class="fa fa-envelope"></i> {% t page-content.contact.email %}: <a href="mailto:{{ site.email }}">{{ site.email }}</a><br />
+					<i class="fa fa-phone"></i> {% t page-content.contact.telephone %}: <a href="#">{{ site.telephone }}</a>
 				</p>
 			</div>
 		</div>
@@ -16,35 +16,35 @@
 			<div class="form-group">
 				<div class="input-group">
 					<div class="input-group-addon"><i class="fa fa-user"></i></div>
-					<input type="text" name="name" required class="form-control" id="contact-name" placeholder="Name">
+					<input type="text" name="name" required class="form-control" id="contact-name" placeholder="{% t page-content.contact.name %}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="input-group">
 					<div class="input-group-addon"><i class="fa fa-at"></i></div>
-					<input type="email" name="email" required class="form-control" placeholder="Email">
+					<input type="email" name="email" required class="form-control" placeholder="{% t page-content.contact.email %}">
 				</div>
 			</div>
 			<div class="form-group">
 				<div class="input-group">
 					<div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
-					<textarea name="message" class="form-control" required id="contact-message" placeholder="Message"></textarea>
+					<textarea name="message" class="form-control" required id="contact-message" placeholder="{% t page-content.contact.message %}"></textarea>
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-6 col-xs-offset-6">
-					<button type="submit" class="form-control">Send</button>
+					<button type="submit" class="form-control">{% t page-content.contact.send %}</button>
 				</div>
 			</div>
 		</form>
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<ul class="nav nav-pills social">
-					<li><a title="Facebook page" href="https://www.facebook.com/vanderlei.alvesdasilva" target="_blank" class="shadow-top-down social-facebook"><i class="fa fa-facebook-official"></i></a></li>
-					<li><a title="Github page" href="https://github.com/vanderleisilva" class="shadow-top-down social-github" target="_blank"><i class="fa fa-github-square"></i></a></li>
-					<li><a title="LinkedIn page" href="http://www.linkedin.com/in/vanderlei-alves-da-silva" target="_blank" class="shadow-top-down social-linkedin"><i class="fa fa-linkedin-square"></i></a></li>
-					<li><a title="SlideShare page" href="http://pt.slideshare.net/VanderleiAlvesdaSilv" target="_blank" class="shadow-top-down social-slideshare"><i class="fa fa-slideshare"></i></a></li>
-					<li><a title="Node Package Manager page" href="https://www.npmjs.com/~vanderleisilva" target="_blank" class="shadow-top-down social-npm">
+					<li><a title="Facebook" href="https://www.facebook.com/vanderlei.alvesdasilva" target="_blank" class="shadow-top-down social-facebook"><i class="fa fa-facebook-official"></i></a></li>
+					<li><a title="Github" href="https://github.com/vanderleisilva" class="shadow-top-down social-github" target="_blank"><i class="fa fa-github-square"></i></a></li>
+					<li><a title="LinkedIn" href="http://www.linkedin.com/in/vanderlei-alves-da-silva" target="_blank" class="shadow-top-down social-linkedin"><i class="fa fa-linkedin-square"></i></a></li>
+					<li><a title="SlideShare" href="http://pt.slideshare.net/VanderleiAlvesdaSilv" target="_blank" class="shadow-top-down social-slideshare"><i class="fa fa-slideshare"></i></a></li>
+					<li><a title="Node Package Manager" href="https://www.npmjs.com/~vanderleisilva" target="_blank" class="shadow-top-down social-npm">
 						<img class="npmicon" src="/images/npm.png" alt="npm icon" />
 					</a></li>
 				</ul>
