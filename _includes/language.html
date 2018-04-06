@@ -1,0 +1,23 @@
+<div class="language" title="{% t change-language %}">
+    <div class="selected">
+        <img src="{{ site.baseurl_root }}/images/flags/{{ site.lang }}.png" alt="{{ language }}" />
+        <i class="fa fa-sort-down"></i>
+    </div>
+    <ul>
+        {% for language in site.languages %}
+            {% if language != site.lang %}
+                <li>
+                    {% if language != site.languages[0] %}
+                        <a href="{{ site.baseurl_root }}/{{ language }}{{ page.url}}">
+                    {% else %}
+                        <a href="{{ site.baseurl_root }}{{ page.url}}">
+                    {% endif %}
+                    
+                        <img src="{{ site.baseurl_root }}/images/flags/{{ language }}.png" alt="{{ language }}" />
+                        <label> {{site.translations[language].language}}</label>
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

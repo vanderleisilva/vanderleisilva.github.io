@@ -1,7 +1,7 @@
 <section id="tpl_home">
 	<div class="row">
 		<div id="tpl_perfil" class="col-md-3">
-			{% include perfil.html %}
+			{% tf perfil.html %}
 		</div>
 		<div class="col-md-9 container">
 			<header class="tpl_home_inner_wapper">
@@ -10,32 +10,22 @@
 				</h1>
 			</header>
 			<div class="tpl_home_inner_wapper">
-				<h2 class="text-center">Front-end code that rocks!</h2>
-				<p class="text-center">
-					A free space for those
-					<span class="highlight">fans</span>
-					of <span class="highlight">Front-end</span> technologies.
-					It's a blog based on
-					<a rel="nofollow" href="https://jekyllrb.com/" target="_parent">Jekyll</a> an awesome tool for
-					building static websites.
-					Be welcome fellows! Best regards
-					<a rel="nofollow" href="https://www.linkedin.com/in/vanderlei-alves-da-silva-73380120" target="_parent">{{ site.author }}</a>.
-				</p>
+				{% tf home.html %}
 			</div>
 			<div class="tpl_home_inner_wapper btn_wapper">
 				<div class="col-sm-4">
 					<a href="#tpl_features" class="btn col-xs-12 scroll_effect shadow-top-down">
-						<i class="fa fa-align-justify"></i> Articles
+						<i class="fa fa-align-justify"></i> {% t pages.articles %}
 					</a>
 				</div>
 				<div class="col-sm-4">
-					<a href="/presentations" class="btn col-xs-12 scroll_effect shadow-top-down">
-						Presentations
+					<a href="{{ site.baseurl }}/presentations" class="btn col-xs-12 scroll_effect shadow-top-down">
+						{% t pages.presentations %}
 					</a>
 				</div>
 				<div class="col-sm-4">
 					<a href="#tpl_about" class="btn col-xs-12 scroll_effect shadow-top-down">
-						<i class="fa fa-info-circle"></i> About
+						<i class="fa fa-info-circle"></i> {% t pages.about %}
 					</a>
 				</div>
 			</div>

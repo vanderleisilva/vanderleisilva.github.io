@@ -1,0 +1,33 @@
+language: Português
+change-language: Mudar idioma
+global:
+  title: Codificação Front-end que se destaca. Um espaço aberto aos fãs de tecnologias Front-end
+pages:
+  home: Início
+  articles: Artigos
+  portfolio: Portfólio
+  about: Sobre
+  presentations: Apresentações
+  repositories: Repositórios
+  contact: Contato
+  curriculum: Curriculum
+page-content:
+  articles: Visualizar todos os artigos postados
+  contact:
+    name: Nome
+    email: Email
+    telephone: Telefone
+    message: Mensagem
+    send: Enviar
+  porfolio:
+    item1: Uma simples solução para criação de newsletters.
+    item2: Uma interface de usuário iterativa para jogadores do jogo mastermind.
+    item3: Um e-commerce baseado em Wordpress que vende todos os tipo de botões.
+    viewmore: Mais detalhes
+  presentations:
+    item1: história e semantica
+    item2: melhores práticas em programação
+    description: Lista de todas as apresentações publicadas
+certifications:
+  scrum: ScrumMaster® certicado
+  microsoft: Programador Microsoft especialista em HTML5 com JavaScript e CSS3 

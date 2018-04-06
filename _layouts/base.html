@@ -7,7 +7,7 @@
 
 	<meta property="og:image" content="{{ site.url }}/images/selfie.png" />
 	<meta property="og:title" content="{{ page.title }}" />
-	<meta property="og:description" content="{{ page.description }}" />
+	<meta property="og:description" content="{% t global.title %}" />
 	<meta property="og:url" content="{{ site.url }}">
 	<meta property="og:site_name" content="{{ site.name }}" />
 	<meta property="og:type" content="website" />
@@ -15,10 +15,10 @@
 
 	<title>{{ page.title }}</title>
 	<!-- CSS -->
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/css/tpl_style.css">
-	<link rel="stylesheet" href="/css/hover-effect.css">
+	<link rel="stylesheet" href="{{ "/css/bootstrap.min.css" | prepend: site.baseurl_root }}" />
+	<link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | prepend: site.baseurl_root }}" />
+	<link rel="stylesheet" href="{{ "/css/tpl_style.css" | prepend: site.baseurl_root }}" />
+	<link rel="stylesheet" href="{{ "/css/hover-effect.css" | prepend: site.baseurl_root }}" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.css" />
 	<!-- RSS feed -->
 	<link rel="alternate" type="application/rss+xml" href="/blog/atom.xml" title="{{ site.name }} - RSS" />
@@ -30,6 +30,7 @@
 	<![endif]-->
 </head>
 <body>
+	{% include language.html %}
 	{% include analytics.html %}
 	{% include fb-comments.html %}
 
@@ -47,20 +48,20 @@
 			</div>
 		</div>
 		<div class="certificacoes">
-			<img width="80" title="Microsoft Specialist Programming in HTML5 with JavaScript & CSS3" src="/images/microsoft-certification.png" alt="Microsoft Specialist">
+			<img width="80" title="{% t certifications.microsoft %}" src="/images/microsoft-certification.png" alt="{% t certifications.microsoft %}">
 			<a href="https://www.scrumalliance.org/community/profile/vsilva26" target="_blank">
-				<img width="80" src="/images/csm-certification.png" title="Certified ScrumMaster®" alt="ScrumMaster Certification">
+				<img width="80" src="/images/csm-certification.png" title="{% t certifications.scrum %}" alt="{% t certifications.scrum %}">
 			</a>
 		</div>
 	</footer>
 	<!-- require plugins -->
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/jquery-ui.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.parallax.js"></script>
-	<script src="/js/validator.min.js"></script>
+	<script src="{{ "/js/jquery.min.js" | prepend: site.baseurl_root }}"></script>
+	<script src="{{ "/js/jquery-ui.min.js" | prepend: site.baseurl_root }}"></script>
+	<script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl_root }}"></script>
+	<script src="{{ "/js/jquery.parallax.js" | prepend: site.baseurl_root }}"></script>
+	<script src="{{ "/js/validator.min.js" | prepend: site.baseurl_root }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.1.1/ekko-lightbox.js"></script>
 	<!-- template mo config script -->
-	<script src="/js/tpl_scripts.js"></script>
+	<script src="{{ "/js/tpl_scripts.js" | prepend: site.baseurl_root }}"></script>
 </body>
 </html>
